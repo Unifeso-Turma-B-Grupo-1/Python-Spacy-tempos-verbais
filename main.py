@@ -1,7 +1,15 @@
 import sys, json, spacy, time;
 import tkinter as tk;
 from tkinter import filedialog;
+from translate import Translator
 sys.stdout.reconfigure(encoding='utf-8'); #encoda caracteres especiais
+
+#tradutor de string
+tradutor = Translator(to_lang="pt-br")
+def traduzir(frase):
+    print(f"\n--A tradução do inglês para o PT-BR: {tradutor.translate(frase)}---------\n")
+    
+
 
 # arrays para tempos verbais
 g_Simple_present = []
@@ -39,6 +47,8 @@ def __init__():
         else:
             print("Não foi possível acessar o arquivo.")
             sys.exit()
+    
+    traduzir(conteudo)
     doc = nlp(conteudo)
     if show_content(doc):
         classify_verbs()
