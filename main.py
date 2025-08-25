@@ -7,7 +7,7 @@ sys.stdout.reconfigure(encoding='utf-8'); #encoda caracteres especiais
 #tradutor de string
 tradutor = Translator(to_lang="pt-br")
 def traduzir(frase):
-    print(f"\n--A tradução do inglês para o PT-BR: {tradutor.translate(frase)}---------\n")
+    print(f"\n-----> A tradução do inglês para o PT-BR: <-----\n-----> {tradutor.translate(frase)} <-----\n")
     
 
 
@@ -107,28 +107,28 @@ def classify_verbs():
     print("----- [VERBOS NO SIMPLE PRESENT] ----- (ex: runs)")
     if g_Simple_present:
         for word in g_Simple_present:
-            print("-"*5 + word + "-"*5)
+            print(" "*10 + "-"*5 + word + "-"*5)
     else:
         print(f"{frase} simple present")
 
     print("\n----- [VERBOS NO PRESENT CONTINUOUS] ----- (ex: running)")
     if g_Present_continuous:
         for word in g_Present_continuous:
-            print("-"*5 + word + "-"*5)
+            print(" "*10 + "-"*5 + word + "-"*5)
     else:
         print(f"{frase} simple continuous")
 
     print("\n----- [VERBOS NO SIMPLE PAST] ----- (ex: ran)")
     if g_Simple_past:
         for word in g_Simple_past:
-            print("-"*5 + word + "-"*5)
+            print(" "*10 + "-"*5 + word + "-"*5)
     else:
         print(f"{frase} simple past")
 
     print("\n----- [VERBOS NO PAST PARTICIPLE] ----- (ex: eaten)")
     if g_Past_participle:
         for word in g_Past_participle:
-            print("-"*5 + word + "-"*5)
+            print(" "*10 + "-"*5 + word + "-"*5)
     else:
         print(f"{frase} simple participle")
 __init__()
