@@ -2,14 +2,14 @@ import sys, json, spacy, time;
 import tkinter as tk;
 from tkinter import filedialog;
 from translate import Translator
+
+
 sys.stdout.reconfigure(encoding='utf-8'); #encoda caracteres especiais
 
 #tradutor de string
 tradutor = Translator(to_lang="pt-br")
 def traduzir(frase):
     print(f"\n-----> A tradução do inglês para o PT-BR: <-----\n-----> {tradutor.translate(frase)} <-----\n")
-    
-
 
 # arrays para tempos verbais
 g_Simple_present = []
@@ -131,4 +131,6 @@ def classify_verbs():
             print(" "*10 + "-"*5 + word + "-"*5)
     else:
         print(f"{frase} simple participle")
-__init__()
+
+if __name__ == "__main__":
+    __init__()
