@@ -1,5 +1,6 @@
 import sys, json, spacy
 from translate import Translator
+import re
 
 sys.stdout.reconfigure(encoding='utf-8'); 
 
@@ -18,14 +19,14 @@ g_Past_participle = []
 g_Modal_Verbs = []
 
 g_Ignored_values = []
+g_Linking_words = []
 
 try:
     with open("dicionarios.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 except json.JSONDecodeError as e:
     print("Erro ao carregar 'dicionarios.json': " + str(e))
-    
-g_Linking_words = data["linking_words"]
+
 
 def show_content(doc):
     ignored_values = data["ignore"].values()
@@ -150,5 +151,16 @@ def classify_rest(doc):
             content += " "*10 + "-"*5 + pron + "-"*5 + "\n"
     else:
         content += f"{frase} pronomes\n"
+
+    content += "\n----- [LINKING WORDS] -----\n"
+    found = False 
+
+    for key in data['linking_words']:
+        if  re.search(' '+ key+ ' ', doc.text, re.IGNORECASE):
+            content += " "*10 + "-"*5 + key + "-"*5 + "\n"
+            found = True
+    
+    if not found:
+        content += f'{frase} linking words'
 
     return content
